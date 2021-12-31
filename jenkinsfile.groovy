@@ -7,8 +7,8 @@ pipeline {
     }    
 
 	parameters {
-	    string(name: 'master', description:'testing')
-	    string(name: 'slave', description:'testing')
+	    string(name: 'master', defaultvalue:'https://github.com/ramesh2617/master.git', description:'testing')
+	    string(name: 'slave', defaultvalue:'https://github.com/ramesh2617/slave.git', description:'testing')
 	}
 	
     stages  {	
