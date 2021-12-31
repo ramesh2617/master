@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        project1="https://github.com/ramesh2617/master.git"
-        project2="https://github.com/ramesh2617/slave.git"
+        master="https://github.com/ramesh2617/master.git"
+        slave="https://github.com/ramesh2617/slave.git"
     }    
 
 	parameters {
@@ -22,8 +22,8 @@ pipeline {
 		}  
         stage('Set Git Credentials'){
 		  steps{
-            git branch: 'feature', credentialsId: 'e8fe7044-14cf-4c53-b693-cc45e142c906', url: 'https://github.com/ramesh2617/master.git'
-            git branch: 'feature', credentialsId: 'e8fe7044-14cf-4c53-b693-cc45e142c906', url: 'https://github.com/ramesh2617/slave.git'
+            git credentialsId: 'b6fc8a44-5b4f-4c05-b741-d7da73334889', url: 'https://github.com/ramesh2617/master.git'
+            git credentialsId: 'b6fc8a44-5b4f-4c05-b741-d7da73334889', url: 'https://github.com/ramesh2617/slave.git'
           }
 		}  
 
