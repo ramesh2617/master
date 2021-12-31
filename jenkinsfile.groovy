@@ -33,7 +33,7 @@ pipeline {
             sh 'git clone --mirror ${https://github.com/ramesh2617/master.git}feature.git'
             dir("master.git"){
                //add a remote repository
-               sh 'git remote add --mirror=fetch slave ${https://github.com/ramesh2617/slave.git}'
+               sh ' git push --mirror ${https://github.com/ramesh2617/slave.git}'
                // update the local copy from the first repository
                sh 'git fetch origin --tags'
 
