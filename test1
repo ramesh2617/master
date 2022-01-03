@@ -11,7 +11,7 @@ node('master') {
     }
 
     stage('Syncronize master-slave'){
-        sh 'test1.sh'
+        sh 'script.sh'
         sh 'git clone --bare ${https://github.com/ramesh2617/master.git} master.git'
         dir("master.git") {
             //add a remote repository
