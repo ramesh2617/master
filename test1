@@ -1,1 +1,29 @@
-hii
+node('master') {
+    stage('Set Git Config'){
+        sh 'git config --global user.email "test@test.com"'
+        sh 'git config --global user.name "Ramesh"'
+        sh 'git config --global credential.helper cache'
+        sh "git config --global credential.helper 'cache --timeout=3600'"
+    }
+    stage('Set Git Credentials'){
+        git credentialsId: 'b6fc8a44-5b4f-4c05-b741-d7da73334889', url: 'https://github.com/ramesh2617/master.git'
+        git credentialsId: 'b6fc8a44-5b4f-4c05-b741-d7da73334889', url: 'https://github.com/ramesh2617/slave.git'
+    }
+
+    stage('Syncronize master-slave'){
+        sh 'git clone --bare ${https://github.com/ramesh2617/master.git} master.git'
+        dir("master.git") {
+            //add a remote repository
+            sh 'git push --mirror https://github.com/ramesh2617/slave.git
+            // update the local copy from the first repository
+            sh 'git fetch origin --tags'
+
+            // update the local copy with the second repository
+            sh 'git fetch slave --tags'
+
+            // sync back the second repository
+            sh 'git push slave --all'
+            sh 'git push slave --tags'
+        }
+    }
+}
