@@ -14,7 +14,7 @@ node('master') {
         sh 'git clone --bare ${https://github.com/ramesh2617/master.git} master.git'
         dir("master.git") {
             //add a remote repository
-            sh 'git push --mirror https://github.com/ramesh2617/slave.git
+            sh 'git push --mirror https://github.com/ramesh2617/slave.git'
             // update the local copy from the first repository
             sh 'git fetch origin --tags'
 
